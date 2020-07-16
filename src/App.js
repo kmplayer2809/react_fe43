@@ -9,6 +9,8 @@ import EventBinding from './EventBinding/EventBinding';
 import RenderWithState from './RenderWithState/RenderWithState';
 import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap';
+import BaiTapChonKinh from './RenderWithState/BaiTapChonKinh';
+import DemoProps from './Props/DemoProps';
 
 function App() {
     return (
@@ -28,13 +30,15 @@ function App() {
         </a>
       </header> */}
             {/* <Header /> */}
-            {/* <BaiTapLayout /> */}
+            <BaiTapLayout />
             {/* <BaiTapLayout2 /> */}
             {/* <DataBinding /> */}
             {/* <EventBinding /> */}
             {/* <RenderWithState /> */}
             {/* <BaiTapChonXe /> */}
-            <RenderWithMap />
+            {/* <RenderWithMap /> */}
+            {/* <BaiTapChonKinh /> */}
+            {/* <DemoProps /> */}
         </div>
     );
 }
