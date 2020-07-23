@@ -11,6 +11,7 @@ import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap';
 import BaiTapChonKinh from './RenderWithState/BaiTapChonKinh';
 import DemoProps from './Props/DemoProps';
+import ExampleCard from './LiftingUpState/ExampleCard';
 
 function App() {
     return (
@@ -30,7 +31,7 @@ function App() {
         </a>
       </header> */}
             {/* <Header /> */}
-            <BaiTapLayout />
+            {/* <BaiTapLayout /> */}
             {/* <BaiTapLayout2 /> */}
             {/* <DataBinding /> */}
             {/* <EventBinding /> */}
@@ -39,6 +40,7 @@ function App() {
             {/* <RenderWithMap /> */}
             {/* <BaiTapChonKinh /> */}
             {/* <DemoProps /> */}
+            <ExampleCard />
         </div>
     );
 }
