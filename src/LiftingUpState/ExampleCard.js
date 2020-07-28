@@ -9,6 +9,33 @@ export default class ExampleCard extends Component {
     proSelected: null,
     cardList: [],
   };
+  // Xử lý 2 nút tăng giảm số lượng.
+  tangGiamSoLuong = (maSP, tangGiam) => {
+    //Tăng là true giảm là false
+    // Tìm ra sản phẩm chứa mã SP = với maSP nút tăng giảm số lượng click
+
+    console.log("Dĩ đẹp trai");
+    let gioHangCapNhat = [...this.state.cardList];
+    let index = gioHangCapNhat.findIndex(
+      (spGioHang) => spGioHang.maSP === maSP
+    );
+    if (index !== -1) {
+      if (tangGiam) {
+        gioHangCapNhat[index].soLuong++;
+      } else if (gioHangCapNhat[index].soLuong > 1) {
+        gioHangCapNhat[index].soLuong--;
+      } else {
+        alert("Số lượng tối thiểu =1");
+      }
+    }
+
+    // console.log(gioHangCapNhat);
+    //setState lại
+    this.setState({
+      cardList: gioHangCapNhat,
+    });
+  };
+
   handleSelectedPro = (pro) => {
     this.setState({ proSelected: pro });
   };
@@ -16,39 +43,42 @@ export default class ExampleCard extends Component {
     //tạo cardList mới
     let cardListUpdate = [...this.state.cardList];
     //Tìm vị trí của phần tử trong mảng
-    let index = cardListUpdate.findIndex((item)=>item.maSP===card.maSP);
-    if (index>=0){
-        //tìm thấy
-        cardListUpdate[index].soLuong++;
-    }
-    else {
-        //không tìm thấy
-        card.soLuong = 1;
-        cardListUpdate = [...cardListUpdate, card]
+    let index = cardListUpdate.findIndex((item) => item.maSP === card.maSP);
+    if (index >= 0) {
+      //tìm thấy
+      cardListUpdate[index].soLuong++;
+    } else {
+      //không tìm thấy
+      card.soLuong = 1;
+      cardListUpdate = [...cardListUpdate, card];
     }
     //set State
     this.setState({
       cardList: cardListUpdate,
     });
   };
-  handleDelete = (card) =>{
-      /** 
-       * 1. Tìm vị trí đang đứng. 
-       * 2. Cắt ra khỏi mảng 
-       * 3. Set state
-      */
-     let cardListUpdate = [...this.state.cardList];
-     let index = cardListUpdate.findIndex((item)=>item.maSP===card.maSP);
-     cardListUpdate.splice(index,1);
-     this.setState({
-         cardList:cardListUpdate,
-     })
-  }
+  handleDelete = (card) => {
+    /**
+     * 1. Tìm vị trí đang đứng.
+     * 2. Cắt ra khỏi mảng
+     * 3. Set state
+     */
+    let cardListUpdate = [...this.state.cardList];
+    let index = cardListUpdate.findIndex((item) => item.maSP === card.maSP);
+    cardListUpdate.splice(index, 1);
+    this.setState({
+      cardList: cardListUpdate,
+    });
+  };
   render() {
     return (
       <div>
         <div className="container">
-          <Card cardList={this.state.cardList} handleDelete={this.handleDelete}/>
+          <Card
+            tangGiamSoLuong={this.tangGiamSoLuong}
+            cardList={this.state.cardList}
+            handleDelete={this.handleDelete}
+          />
           <ProductList
             proList={this.state.proList}
             handleSelectedPro={this.handleSelectedPro}
