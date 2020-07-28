@@ -13,6 +13,7 @@ import BaiTapChonKinh from './RenderWithState/BaiTapChonKinh';
 import DemoProps from './Props/DemoProps';
 import ExampleCard from './LiftingUpState/ExampleCard';
 import BaiTapGioHang from './BaiTapRedux/BaiTapGioHang/BaiTapGioHang';
+import GameBauCua from './GameBauCua/GameBauCua';
 
 function App() {
     return (
@@ -42,7 +43,8 @@ function App() {
             {/* <BaiTapChonKinh /> */}
             {/* <DemoProps /> */}
             {/* <ExampleCard /> */}
-            <BaiTapGioHang />
+            {/* <BaiTapGioHang /> */}
+            <GameBauCua />
         </div>
     );
 }
