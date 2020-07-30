@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import {tangGiamAction} from "../../redux/actions/GameBauCuaAction";
 class DanhSachCuoc extends Component {
   renderDanhSachCuoc = (list) => {
     return list.map((item, index) => {
@@ -49,12 +49,12 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     //key là props của component: value là method send action to reducer
     tangGiamMucCuoc: (ma,tangGiam)=>{
-      const actions = {
-        type:"TANG_GIAM",
-        ma:ma,
-        tangGiam:tangGiam,
-      };
-      dispatch(actions);
+      // const actions = {
+      //   type:"TANG_GIAM",
+      //   ma:ma,
+      //   tangGiam:tangGiam,
+      // };
+      dispatch(tangGiamAction(ma,tangGiam));
     },
   };
 };
