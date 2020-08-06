@@ -14,6 +14,9 @@ import DemoProps from './Props/DemoProps';
 import ExampleCard from './LiftingUpState/ExampleCard';
 import BaiTapGioHang from './BaiTapRedux/BaiTapGioHang/BaiTapGioHang';
 import GameBauCua from './GameBauCua/GameBauCua';
+import GameTaiXiu from './GameTaiXiu';
+import Form_Validation from './Form_Validation/Form_Validation';
+import QLSV from './Form_Validation/QLSV';
 
 function App() {
     return (
@@ -44,7 +47,10 @@ function App() {
             {/* <DemoProps /> */}
             {/* <ExampleCard /> */}
             {/* <BaiTapGioHang /> */}
-            <GameBauCua />
+            {/* <GameBauCua /> */}
+            {/* <GameTaiXiu /> */}
+            {/* <Form_Validation /> */}
+            <QLSV />
         </div>
     );
 }
