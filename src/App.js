@@ -17,6 +17,7 @@ import GameBauCua from './GameBauCua/GameBauCua';
 import GameTaiXiu from './GameTaiXiu';
 import Form_Validation from './Form_Validation/Form_Validation';
 import QLSV from './Form_Validation/QLSV';
+import ReactLifeCycle from './ReactLifeCycle/ReactLifeCycle';
 
 function App() {
     return (
@@ -51,6 +52,7 @@ function App() {
             {/* <GameTaiXiu /> */}
             {/* <Form_Validation /> */}
             <QLSV />
+            {/* <ReactLifeCycle /> */}
         </div>
     );
 }

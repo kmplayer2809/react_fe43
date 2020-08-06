@@ -12,7 +12,14 @@ class QLSV extends Component {
           <td>{nguoiDung.email}</td>
           <td>{nguoiDung.soDt}</td>
           <td>{nguoiDung.maNhom}</td>
-          <td></td>
+          <td>
+            <button className="btn btn-primary" onClick={()=>{
+              this.props.dispatch({type:'CHINH_SUA',nguoiDung})
+            }}>Chỉnh sửa</button>
+            <button className="btn btn-danger" onClick={()=>{
+              this.props.dispatch({type:'XOA_NGUOI_DUNG',taiKhoan:nguoiDung.taiKhoan})
+            }}>Xóa</button>
+          </td>
         </tr>
       );
     });
@@ -43,6 +50,7 @@ class QLSV extends Component {
 function mapStateToProps(state) {
   return {
     mangNguoiDung: state.QLSVReducer.mangNguoiDung,
+    nguoiDungEdit: state.QLSVReducer.nguoiDungEdit,
   };
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 class Form_Validation extends Component {
   state = {
     values: {
@@ -8,7 +9,7 @@ class Form_Validation extends Component {
       matKhau: "",
       email: "",
       soDt: "",
-      maNhom: "GP16",
+      maNhom: "",
     },
     errors: {
       taiKhoan: "",
@@ -73,7 +74,7 @@ class Form_Validation extends Component {
 
     let { values, errors } = this.state;
 
-    //Duyệt các trường values của state.abs
+    //Duyệt các trường values của state.
     for (let key in values) {
       if (values[key].trim === "") {
         alert("Dữ liệu không hợp lệ!");
@@ -94,8 +95,27 @@ class Form_Validation extends Component {
       nguoiDung: this.state.values,
     });
   };
+  //   //Chạy sau khi nhận props mới và trước khi render =>trả về state mới.
+  //   static getDerivedStateFromProps(newProps, currentState){
+  //     //lấy props mới trả về state mới
+  //     console.log('newprops:',newProps);
+  //     //So sánh nếu nguoiDungEdit (được click) khác state hiện tại  thì lấy thằng newProps
+  //     if (newProps.nguoiDungEdit.edit && newProps.nguoiDungEdit.taiKhoan!==currentState.values.taiKhoan){
+  //       let newState = {...currentState, values:newProps.nguoiDungEdit}
+  //       return {...newState};
+  //     }
+  //     return null;
+  // }
+
+  componentWillReceiveProps(newsProps){
+    this.setState({
+      values:newsProps.nguoiDungEdit
+    })
+  }
 
   render() {
+    // let {taiKhoan, email, hoTen, matKhau, soDt, maNhom}  = this.props.nguoiDungEdit
+    let { taiKhoan, email, hoTen, matKhau, soDt, maNhom } = this.state.values;
     return (
       <div className="card text-white bg-white text-dark text-center">
         <div classname="card-header bg-dark text-light">Form đăng ký</div>
@@ -106,6 +126,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Tài khoản</p>
                   <input
+                    defaultValue={taiKhoan}
+                    value={taiKhoan}
                     label="Tài khoản"
                     type=""
                     className="form-control"
@@ -119,6 +141,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Mật khẩu</p>
                   <input
+                    defaultValue={matKhau}
+                    value={matKhau}
                     label="Mật khẩu"
                     type="password"
                     className="form-control"
@@ -132,6 +156,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Số điện thoại</p>
                   <input
+                    defaultValue={soDt}
+                    value={soDt}
                     label="Số điện thoại"
                     type="phone"
                     className="form-control"
@@ -145,6 +171,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Họ tên</p>
                   <input
+                    defaultValue={hoTen}
+                    value={hoTen}
                     label="Họ tên"
                     type=""
                     className="form-control"
@@ -156,6 +184,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Email</p>
                   <input
+                    defaultValue={email}
+                    value={email}
                     label="Email"
                     type="email"
                     className="form-control"
@@ -167,6 +197,8 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Mã nhóm</p>
                   <input
+                    defaultValue={maNhom}
+                    value={maNhom}
                     label="Mã nhóm"
                     type=""
                     className="form-control"
@@ -177,6 +209,13 @@ class Form_Validation extends Component {
                 </div>
                 <div className="form-group">
                   <button className="btn btn-success">Đăng ký</button>
+                  <button type="button" className="btn btn-danger" onClick={()=>{
+                    //Sự kiện cập nhật
+                    this.props.dispatch({
+                      type:'CAP_NHAT',
+                      nguoiDung:this.state.values
+                    })
+                  }}>Cập nhật</button>
                 </div>
               </div>
             </div>
@@ -187,4 +226,10 @@ class Form_Validation extends Component {
   }
 }
 
-export default connect(null)(Form_Validation);
+const mapStateToProps = (state) => {
+  return {
+    nguoiDungEdit: state.QLSVReducer.nguoiDungEdit,
+  };
+};
+
+export default connect(mapStateToProps, null)(Form_Validation);
