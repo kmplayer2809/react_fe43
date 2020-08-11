@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header';
@@ -18,6 +18,7 @@ import GameTaiXiu from './GameTaiXiu';
 import Form_Validation from './Form_Validation/Form_Validation';
 import QLSV from './Form_Validation/QLSV';
 import ReactLifeCycle from './ReactLifeCycle/ReactLifeCycle';
+import PureComponentDemo from './PureComponentDemo/PureComponentDemo';
 
 function App() {
     return (
@@ -51,8 +52,9 @@ function App() {
             {/* <GameBauCua /> */}
             {/* <GameTaiXiu /> */}
             {/* <Form_Validation /> */}
-            <QLSV />
+            {/* <QLSV /> */}
             {/* <ReactLifeCycle /> */}
+            <PureComponentDemo />
         </div>
     );
 }

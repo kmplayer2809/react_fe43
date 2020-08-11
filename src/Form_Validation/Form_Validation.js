@@ -107,11 +107,11 @@ class Form_Validation extends Component {
   //     return null;
   // }
 
-  componentWillReceiveProps(newsProps){
-    this.setState({
-      values:newsProps.nguoiDungEdit
-    })
-  }
+  // componentWillReceiveProps(newsProps){
+  //   this.setState({
+  //     values:newsProps.nguoiDungEdit
+  //   })
+  // }
 
   render() {
     // let {taiKhoan, email, hoTen, matKhau, soDt, maNhom}  = this.props.nguoiDungEdit
@@ -209,13 +209,19 @@ class Form_Validation extends Component {
                 </div>
                 <div className="form-group">
                   <button className="btn btn-success">Đăng ký</button>
-                  <button type="button" className="btn btn-danger" onClick={()=>{
-                    //Sự kiện cập nhật
-                    this.props.dispatch({
-                      type:'CAP_NHAT',
-                      nguoiDung:this.state.values
-                    })
-                  }}>Cập nhật</button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => {
+                      //Sự kiện cập nhật
+                      this.props.dispatch({
+                        type: "CAP_NHAT",
+                        nguoiDung: this.state.values,
+                      });
+                    }}
+                  >
+                    Cập nhật
+                  </button>
                 </div>
               </div>
             </div>
@@ -223,6 +229,16 @@ class Form_Validation extends Component {
         </div>
       </div>
     );
+  }
+//prevProps: là props trước khi render. 
+//prevState: là state trước khi render
+  componentDidUpdate(prevProps, prevState) {
+    if (!_.isEqual(prevProps.nguoiDungEdit, this.props.nguoiDungEdit)){
+      //Chỉ setState khi người dùng bấm nút chỉnh sửa. 
+      this.setState({
+        values: this.props.nguoiDungEdit
+      })
+    }
   }
 }
 
